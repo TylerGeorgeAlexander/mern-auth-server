@@ -20,8 +20,8 @@ const userRouter = require("./routes/userRoutes");
 
 const app = express();
 
-// Mongo sessionStore
-var sessionStore = new MongoDBStore({
+// Mongo store
+var store = new MongoDBStore({
   uri: process.env.MONGO_DB_CONNECTION_STRING,
   collection: "mySessions",
 });
@@ -30,7 +30,7 @@ app.use(
   session({
     secret: process.env.COOKIE_SECRET,
     // name: process.env.cookie_name,
-    store: sessionStore, // connect-mongo session store
+    store: store, // connect-mongo session store
     proxy: true,
     resave: true,
     saveUninitialized: true,
