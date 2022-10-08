@@ -1,6 +1,6 @@
 import { Button, Callout, FormGroup, InputGroup } from "@blueprintjs/core"
 import React, { useContext, useState } from "react"
-import { UserContext } from "./context/UserContext"
+import { UserContext } from "../context/UserContext"
 
 const Register = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)

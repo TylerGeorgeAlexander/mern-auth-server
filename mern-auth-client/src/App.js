@@ -1,10 +1,10 @@
 import { Card, Tab, Tabs } from "@blueprintjs/core";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { UserContext } from "./context/UserContext";
-import Loader from "./Loader";
-import Login from "./Login";
-import Register from "./Register";
-import Welcome from "./Welcome";
+import Loader from "./components/Loader";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Welcome from "./components/Welcome";
 
 function App() {
   const [currentTab, setCurrentTab] = useState("login");
