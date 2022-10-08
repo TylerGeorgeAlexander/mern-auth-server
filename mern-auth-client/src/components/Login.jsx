@@ -50,7 +50,7 @@ const Login = () => {
       <form onSubmit={formSubmitHandler} className="auth-form">
         <FormGroup label="Email" labelFor="email">
           <InputGroup
-            id="email"
+            id="emailLogin"
             placeholder="Email"
             type="email"
             value={email}
@@ -59,7 +59,7 @@ const Login = () => {
         </FormGroup>
         <FormGroup label="Password" labelFor="password">
           <InputGroup
-            id="password"
+            id="passwordLogin"
             placeholder="Password"
             type="password"
             value={password}
