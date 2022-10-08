@@ -1,20 +1,21 @@
-import { Button, Callout, FormGroup, InputGroup } from "@blueprintjs/core"
-import React, { useContext, useState } from "react"
-import { UserContext } from "../context/UserContext"
+import { Button, Callout, FormGroup, InputGroup } from "@blueprintjs/core";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../context/UserContext";
 
 const Login = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [error, setError] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [userContext, setUserContext] = useContext(UserContext)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  // eslint-disable-next-line no-unused-vars
+  const [userContext, setUserContext] = useContext(UserContext);
 
-  const formSubmitHandler = e => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setError("")
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError("");
 
-    const genericErrorMessage = "Something went wrong! Please try again later."
+    const genericErrorMessage = "Something went wrong! Please try again later.";
 
     fetch(process.env.REACT_APP_API_ENDPOINT + "users/login", {
       method: "POST",
@@ -22,28 +23,28 @@ const Login = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: email, password }),
     })
-      .then(async response => {
-        setIsSubmitting(false)
+      .then(async (response) => {
+        setIsSubmitting(false);
         if (!response.ok) {
           if (response.status === 400) {
-            setError("Please fill all the fields correctly!")
+            setError("Please fill all the fields correctly!");
           } else if (response.status === 401) {
-            setError("Invalid email and password combination.")
+            setError("Invalid email and password combination.");
           } else {
-            setError(genericErrorMessage)
+            setError(genericErrorMessage);
           }
         } else {
-          const data = await response.json()
-          setUserContext(oldValues => {
-            return { ...oldValues, token: data.token }
-          })
+          const data = await response.json();
+          setUserContext((oldValues) => {
+            return { ...oldValues, token: data.token };
+          });
         }
       })
-      .catch(error => {
-        setIsSubmitting(false)
-        setError(genericErrorMessage)
-      })
-  }
+      .catch((error) => {
+        setIsSubmitting(false);
+        setError(genericErrorMessage);
+      });
+  };
   return (
     <>
       {error && <Callout intent="danger">{error}</Callout>}
@@ -54,7 +55,7 @@ const Login = () => {
             placeholder="Email"
             type="email"
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </FormGroup>
         <FormGroup label="Password" labelFor="password">
@@ -63,7 +64,7 @@ const Login = () => {
             placeholder="Password"
             type="password"
             value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </FormGroup>
         <Button
@@ -75,7 +76,7 @@ const Login = () => {
         />
       </form>
     </>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
