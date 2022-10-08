@@ -8,7 +8,13 @@ const {
   getToken,
   COOKIE_OPTIONS,
   getRefreshToken,
+  verifyUser,
 } = require("../authenticate");
+
+// ME - Endpoint to fetch user details
+router.get("/me", verifyUser, (req, res, next) => {
+  res.send(req.user)
+})
 
 // SIGNUP
 router.post("/signup", (req, res, next) => {
