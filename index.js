@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const session = require("express-session");
+var MongoDBStore = require("connect-mongodb-session")(session);
 
 if (process.env.NODE_ENV !== "production") {
   // Load environment variables from .env file in non prod environments
@@ -18,12 +19,18 @@ require("./authenticate");
 const userRouter = require("./routes/userRoutes");
 
 const app = express();
+
+// Mongo sessionStore
+var sessionStore = new MongoDBStore({
+  uri: process.env.MONGO_DB_CONNECTION_STRING,
+  collection: "mySessions",
+});
 // express session examples for deprecated undefined and additional JWT options
 app.use(
   session({
     secret: process.env.COOKIE_SECRET,
     // name: process.env.cookie_name,
-    // store: sessionStore, // connect-mongo session store
+    store: sessionStore, // connect-mongo session store
     proxy: true,
     resave: true,
     saveUninitialized: true,
