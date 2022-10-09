@@ -67,5 +67,5 @@
 #### notes:
 * this project uses cookies for storing the jwt
 * google chrome will not generate the token with localhost
-* in chrome => refreshing the page in development localhost will log you out
-* in in firefox and safari => refreshing maintains login state/context while testing in localhost 
+* in chrome => refreshing the page testing development in localhost will log you out
+* in firefox and safari => refreshing maintains login state/context while testing in localhost 
