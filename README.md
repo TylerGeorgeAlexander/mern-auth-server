@@ -52,7 +52,7 @@
 6. ```yarn start```
 
 # and then what?
-* you did it, you set up mongodb, express, react, and node in a full stack application that utilizes passport and jwt for authentication
+* you did it! you set up mongodb, express, react, and node in a full stack application that utilizes passport and jwt for authentication
 ## gratz
 * don't delay start today!
 * that means go build
@@ -64,8 +64,8 @@
 * add CRUD
 * go build
 
-#### note:
+#### notes:
 * this project uses cookies for storing the jwt
 * google chrome will not generate the token with localhost
-* refreshing the page in development localhost will log you out
-* refreshing works while testing in firefox and safari
+* in chrome => refreshing the page in development localhost will log you out
+* in in firefox and safari => refreshing maintains login state/context while testing in localhost 
